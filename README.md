@@ -9,3 +9,4 @@
 - Resource management: K8s understand & manage CPU and memory well, but for other types of resource, e.g. network bandwidth, disk I/O operations are not supported. 
 - Scheduler: ensure workloads are fairly distributed at the current time, but if more nodes are avaliable later, no auto rescheduling.
 - Size: Clustering requires communication between nodes, the number of possible communication paths, and cumulative load on the underlying database, grows exponetially with the size of cluster. Now limit to 5000 nodes.
+- Control: optimization and orchestration are done through hard-code logic, not adopt ML
