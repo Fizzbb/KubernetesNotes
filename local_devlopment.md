@@ -20,15 +20,36 @@ Refer to K8s community [development guide.](https://github.com/kubernetes/commun
     curl -O https://storage.googleapis.com/golang/go1.15.5.linux-amd64.tar.gz
     # install (unzip and place to /usr/local)
     tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
-    # export path, add the following to ~/.bashrc to make it permanent 
-    export PATH=$PATH:/usr/local/go/bin
-    # set up go env variable
-    go env -w GOBIN=/usr/local/go/bin
-    go env -w GOPATH=/usr/local/go
+    # set up go env variable, add the following to ~/.bashrc to make it permanent
+    export GOROOT=/usr/local/go
+    export GOPATH=$HOME/go   # location for future go get libararies
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     ```
-  - Install etcd, to test Kubernetes, a key-value store etcd is needed, after download Kubernetes source code, run the following
-    ```sh
-    ./hack/install-etcd.sh
-    export PATH="$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
-    ```
- - Fork Kubernetes
+ - Fork Kubernetes from https://github.com/kubernetes/kubernetes
+ - Clone to $HOME/go/src/k8s.io, 1.1 GB
+   ```sh
+   git clone git@github.com:Fizzbb/kubernetes.git
+   ```
+ - Add and fetch upstream in $HOME/go/src/k8s.io/kubernetes
+   track kubernetes master's changes, not your local forked version
+   ```sh
+   git remote add upstream https://github.com/kubernetes/kubernetes.git
+   git fetch upstream
+   git branch --set-upstream-to=upstream/master master
+   ```
+   Branch 'master' set up to track remote branch 'master' from 'upstream'.
+ - Download other needed go utilities
+   ```sh
+   go get -u github.com/jteeuwen/go-bindata/go-bindata
+   go get -u github.com/cloudflare/cfssl/cmd/...
+   ```
+ - Install etcd, to test Kubernetes, a key-value store etcd is needed
+   ```sh
+   $GOPATH/src/k8s.io/kubernetes/hack/install-etcd.sh
+   export PATH=$PATH:$GOPATH/src/k8s.io/kubernetes/third_party/etcd
+   ```
+- Finally, build and start your local k8s cluster 
+  ```sh
+  $GOPATH/src/k8s.io/kubernetes/hack/local-up-cluster.sh
+  ```
+  Got cannot touch file or pemission denied error for binary in $GOPATH/src/k8s.io/kubernetes/_output/bin
