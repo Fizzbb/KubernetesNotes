@@ -65,3 +65,13 @@ Refer to K8s community [development guide](https://github.com/kubernetes/communi
     export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
   
     cluster/kubectl.sh
+
+**Components can be built locally and tested directly, e.g. kubectl**
+
+   - Modify the code (e.g. add some prints) in ./cmd/kubectl/kubectl.go
+     
+   - Build with  ```make WHAT='cmd/kubectl'```
+    
+   - Verify the local bin has the latest binary ```ll _output/local/bin/linux/amd64/```
+    
+   - Run ```cluster/kubectl.sh get node```
