@@ -1,6 +1,6 @@
 # Prepare local environment for K8s development on Ubuntu
 
-Refer to K8s community [development guide.](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md)
+Refer to K8s community [development guide](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md), [referece video 1](https://www.youtube.com/watch?v=nhEM6TVN9zA), [reference  video 2](https://www.youtube.com/watch?v=qMuNK6JTKms&list=PL69nYSiGNLP3M5X7stuD7N4r3uP2PZQUx&index=8)
 
 - Hardware requirement: 8 GB RAM, 50 GB disk
 - Install dependency 
@@ -48,8 +48,20 @@ Refer to K8s community [development guide.](https://github.com/kubernetes/commun
    $GOPATH/src/k8s.io/kubernetes/hack/install-etcd.sh
    export PATH=$PATH:$GOPATH/src/k8s.io/kubernetes/third_party/etcd
    ```
-- Finally, build and start your local k8s cluster 
+- Finally, build and start your local k8s cluster under $GOPATH/src/k8s.io/kubernetes  
   ```sh
-  $GOPATH/src/k8s.io/kubernetes/hack/local-up-cluster.sh
+  ./hack/local-up-cluster.sh
   ```
-  Got cannot touch file or pemission denied error for binary in $GOPATH/src/k8s.io/kubernetes/_output/bin
+  **Error:** If just use root, and $GOPATH=/root/go, Got "cannot touch file or pemission denied" error for binary in $GOPATH/src/k8s.io/kubernetes/_output/bin
+  
+  **Solution:** create another super user, say beaver, and run as beaver, with $GOPATH=/home/beaver/go
+    ```sh
+  sudo ./hack/local-up-cluster.sh
+  ```
+**Cluster should start successfully, with the following messages**
+
+    To start using your cluster, you can open up another terminal/tab and run:
+
+    export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+  
+    cluster/kubectl.sh
