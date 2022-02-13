@@ -17,3 +17,8 @@ Using kubernetes schedulering framework, build an out-of-tree scheduler to repla
 		"Scheduler-Timestamp": fmt.Sprintf("%d", time.Now().UnixNano())}}}```
 9.  After adding the config file in the ```kube-scheduler --config=XXX``` command, in the config file, profiles sections, if the scheduler name is not ```default-scheduler```, you need to add scheduler name in the pods/deployments/... spec, if even there is only one profile in the file.
 10. Last but not the least, if you modify the score plugin, to test the functions, you need to choose at least a two worker node cluster, or untaint the master (```kubectl taint node <MASTER_NODENAME> node-role.kubernetes.io/master:NoSchedule-```). Otherwise the score phase will not be invoked in a one-node cluster.
+
+# Results
+After addressing all the issues above, you can see pods all come with a nano second resolution timestamp (the time it enters scheduler's scoring phase) in the annoations after scheduling.
+
+![pod_ann](./images/Pod_Ann.png)
