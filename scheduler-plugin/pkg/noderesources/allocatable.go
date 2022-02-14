@@ -103,7 +103,7 @@ func UpdatePodAnnotations(clientset *kubernetes.Clientset, pod *v1.Pod) error {
 	//dont use deep copy to newpod and update, will copy object version, casue the following error
 	//err: Operation cannot be fulfilled on pods "XXX": the object has been modified; please apply your changes to the latest version and try again
 	patchData := map[string]interface{}{"metadata": map[string]map[string]string{"annotations": {
-		"Scheduler-Timestamp": fmt.Sprintf("%d", time.Now().UnixNano())}}}
+		"scheduler-timestamp": fmt.Sprintf("%d", time.Now().UnixNano())}}}
 	//patchData := {"metadata": {"annotations": {"Scheduler-TimeStamp": fmt.Sprintf("%d", time.Now().UnixNano())}}
 
 	namespace := pod.Namespace
