@@ -27,3 +27,6 @@ Follow the commands from [nvidia website](https://developer.nvidia.com/cuda-down
 Latest 11.6 version cude required driver version 510, so if your cards are old, dont install the latest 11.6 version.
 
 ```sudo apt-get install cuda=11.4.4-1``` works with driver 470
+
+To verify installed version
+```nvcc --version```
