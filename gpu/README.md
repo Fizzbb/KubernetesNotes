@@ -53,6 +53,9 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
 sudo apt-get update
 sudo apt-get install -y nvidia-docker2
 ```
+**Note**: If install nvidia-docker2 causing umet dependency, you may want to upgrade docker version.
+With Ubuntu 18.04, nvidia-docker2=2.9.1-1 has issues with docker=19.XX, after upgarde docker to 20.10.1X, nvidia-docker2 can be auto installed.
+
 After install nvidia docker runtime, you can verify the gpu access from contaienrs with the following command. 
 
 ```docker run –rm –runtime=nvidia nvidia/cuda:11.0-base nvidia-smi```
