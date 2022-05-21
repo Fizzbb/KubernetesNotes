@@ -1,6 +1,6 @@
-Install the lasted pynvml package, or install from their [github](https://github.com/gpuopenanalytics/pynvml)
+Install the latest pynvml package, or install from their [github](https://github.com/gpuopenanalytics/pynvml)
 
-We basically want to query device-level utilization (memory, io, sm) and process level utilization. Important functions are used in the [query-example.py](./nvml-python/query_example.py) file
+We basically want to query device-level utilization (memory, io, sm) and process level utilization. Important functions are used in the [query-example.py](./query_example.py) file
 
 Sample outputs
 ```
