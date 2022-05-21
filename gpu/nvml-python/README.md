@@ -2,6 +2,18 @@ Install the latest pynvml package, or install from their [github](https://github
 
 We basically want to query device-level utilization (memory, io, sm) and process level utilization. Important functions are used in the [query-example.py](./query_example.py) file
 
+
+[Nvidia function definition](https://docs.nvidia.com/deploy/nvml-api/group__nvmlGridQueries.html#group__nvmlGridQueries_1gb0ea5236f5e69e63bf53684a11c233bd)
+
+```
+nvmlReturn_t nvmlDeviceGetProcessUtilization ( nvmlDevice_t device, nvmlProcessUtilizationSample_t* utilization, unsigned int* processSamplesCount, unsigned long long lastSeenTimeStamp ) 
+```
+
+```
+lastSeenTimeStamp Return only samples with timestamp greater than lastSeenTimeStamp. If set 0, return all available values.
+```
+The timestamp unit seems to be micro second.
+
 Sample outputs
 ```
 Device 0, GPU util rate 0, Memory util Rate 0
