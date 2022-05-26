@@ -5,6 +5,8 @@ We basically want to query device-level utilization (memory, io, sm) and process
 
 [Nvidia function definition](https://docs.nvidia.com/deploy/nvml-api/group__nvmlGridQueries.html#group__nvmlGridQueries_1gb0ea5236f5e69e63bf53684a11c233bd)
 
+**the following function works on TitanX and V100, does not respond in K80**
+
 ```
 nvmlReturn_t nvmlDeviceGetProcessUtilization ( nvmlDevice_t device, nvmlProcessUtilizationSample_t* utilization, unsigned int* processSamplesCount, unsigned long long lastSeenTimeStamp ) 
 ```
