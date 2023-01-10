@@ -57,6 +57,7 @@ metadata:
     chart: "fission-all-v1.17.0"
     release: "fission-v1-17-0"
 spec:
+  storageClassName: manual
   accessModes:
     - "ReadWriteOnce"
   resources:
