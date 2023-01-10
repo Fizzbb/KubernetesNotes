@@ -10,7 +10,12 @@
  * PV is a cluster wide resource, i.e., no namespace is needed. Sample PV is [here](nfs_pv.yaml).
  * PV and PV's storageClassName needs to be the same (here we chose manual), in order to auto claim
  * Storage reclaim policy: retain, menas after release (PVC deletion), the PV will not be auto reused by new PVC, data is retained. choose recycled for auto reuse.
- 
+
+### 3. install fission cli for easy debug
+```
+curl -Lo fission https://github.com/fission/fission/releases/download/v1.17.0/fission-v1.17.0-linux-amd64 \
+    && chmod +x fission && sudo mv fission /usr/local/bin/
+```
 
 ## Fission Priciples
 
