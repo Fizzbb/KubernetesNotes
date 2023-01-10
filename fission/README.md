@@ -1,4 +1,4 @@
-# Fission installation
+## Fission installation
 
 ### 1. Pods are installed in ```fission```, ```fission-function```, ```fission-builder``` three namespaces
   * ```kubectl create ns fission```
@@ -11,3 +11,9 @@
  * PV and PV's storageClassName needs to be the same (here we chose manual), in order to auto claim
  * Storage reclaim policy: retain, menas after release (PVC deletion), the PV will not be auto reused by new PVC, data is retained. choose recycled for auto reuse.
  
+
+## Fission Priciples
+
+### 1. A function Pod consists with two containers: Fetcher and Runtimer. Fetcher fetches user function into function pod during specialization stage, Rutime is a container contains necessary lanuage environment to run user function. 
+
+### 2. Function pods are managed by pool manager. a warm pool of pods are pre-launched (default=3).
