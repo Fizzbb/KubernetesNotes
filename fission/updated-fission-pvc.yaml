@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fission-storage-pvc
+  namespace: fission
+  labels:
+    app: fission-storage
+    chart: "fission-all-v1.17.0"
+    release: "fission-v1-17-0"
+spec:
+  storageClassName: manual
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"
