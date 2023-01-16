@@ -16,7 +16,21 @@
 curl -Lo fission https://github.com/fission/fission/releases/download/v1.17.0/fission-v1.17.0-linux-amd64 \
     && chmod +x fission && sudo mv fission /usr/local/bin/
 ```
+### 4. create new fission env, different from fission default [python-env](https://github.com/fission/environments/blob/master/python/Dockerfile)
 
+* Generate a specs folder
+```
+fission spec init
+```
+* Copy the [env-gpu.yaml](env-gpu.yaml) to the specs folder, this yaml file has some pariticula syntax, current is a working version with fission 1.17. More examples can be found in [here](https://fission.io/docs/usage/spec/)
+* Apply the spec to create a new env
+```
+fission spec apply
+```
+* check a new env is created
+```
+fission env list
+```
 ## Fission Priciples
 
 ### 1. A function Pod consists with two containers: Fetcher and Runtimer. Fetcher fetches user function into function pod during specialization stage, Rutime is a container contains necessary lanuage environment to run user function. 
