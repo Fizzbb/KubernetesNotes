@@ -3,7 +3,7 @@
 ### 1. Control plane pods are installed in ```fission``` namespace, function pods are launched under ```fission-function``` namespaces
   * ```kubectl create ns fission```
   * Instead of ```kubectl apply -f fission-all-in-one.yaml -n fission```, set ```kubectl config set-context --current --namespace=fission```
-  * Then ```kubectl apply -f fission-all-v1.17.0.yaml```
+  * Then ```kubectl apply -f https://raw.githubusercontent.com/Fizzbb/KubernetesNotes/master/fission/fission-all-v1.17.0.yaml```
   * There a 3rd namespace ```fission-builder``` too. 
 ### 2. Storage-svc pod stuck at pending
  * in the fission all in one yaml, add [storageClassName: manual](fission-all-v1.17.0.yaml#L60) to the  ```fission-storage-pvc```, and create a local or nfs PV manually. then the PVC can pickup the PV, and the storage PVC service pod can start normally. Otherwise it will be stuck at pending.
